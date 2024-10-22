@@ -68,26 +68,18 @@
     </style>
     <script>
         function redirectToYouTube(channelId) {
-    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    if (/android/i.test(userAgent)) {
-        window.location.href = 'intent://www.youtube.com/@' + channelId + '/#Intent;package=com.google.android.youtube;scheme=https;end';
-    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        window.location.href = 'youtube://www.youtube.com/@' + channelId;
-        setTimeout(function () {
-            window.location.href = 'https://www.youtube.com/@' + channelId;
-        }, 1000); // 앱 실행 실패 시 웹 URL로 리디렉션
-    } else {
-        window.location.href = 'https://www.youtube.com/@' + channelId;
-    }
-} else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        window.location.href = 'youtube://www.youtube.com/@' + channelId;
-        setTimeout(function () {
-            window.location.href = 'https://www.youtube.com/@' + channelId;
-        }, 1000); // 앱 실행 실패 시 웹 URL로 리디렉션
-    } else {
-        window.location.href = 'https://www.youtube.com/@' + channelId;
-    }
-}
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) {
+                window.location.href = 'intent://www.youtube.com/@' + channelId + '/#Intent;package=com.google.android.youtube;scheme=https;end';
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = 'youtube://www.youtube.com/@' + channelId;
+                setTimeout(function () {
+                    window.location.href = 'https://www.youtube.com/@' + channelId;
+                }, 1000); // 앱 실행 실패 시 웹 URL로 리디렉션
+            } else {
+                window.location.href = 'https://www.youtube.com/@' + channelId;
+            }
+        }
     </script>
 </head>
 <body>
