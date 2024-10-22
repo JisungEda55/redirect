@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta 바로가기</title>
+        <style>
+        @font-face {
+            font-family: 'LINESeedKR-Bd';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'LINESeedKR-Bd';
+            display: flex;
+            justify-content: center; flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f7;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #1d1d1f;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .button {
+            background-color: #1E201E;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'LINESeedKR-Bd';
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 10px;
+            width: 200px;
+            height: 60px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .button:hover {
+            background-color: #fc3c1c;
+        }
+
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.5);
+        }
+    </style>
+    <script>
+        function redirectTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>여기서 만나요!</h1>
+        <button class="button" onclick="redirectTo('https://www.instagram.com')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            Instagram
+        </button>
+        <button class="button" onclick="redirectTo('https://www.threads.net/')">
+            <img src="https://i.namu.wiki/i/7EIERa9gIxJomN_p6pSWnDXPeBY-nnVkrIEg1I7JcSPZNNIUXpNkisiC6O_EiSVL37PVkKjabLe1AjrUTeqrhA.svg" alt="Threads">
+            Threads
+        </button>
+    </div>
+</body>
+</html>
