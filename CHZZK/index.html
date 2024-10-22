@@ -87,7 +87,7 @@
             }
 
             if (/android/i.test(userAgent)) {
-                isAppInstalled('intent://c68c3e1788d86ff11740edcd7040a8e8#Intent;scheme=chzzk;package=com.nhn.android.chzzk;end', 'https://play.google.com/store/apps/details?id=com.nhn.android.chzzk');
+                isAppInstalled('chzzk://c68c3e1788d86ff11740edcd7040a8e8', 'https://play.google.com/store/apps/details?id=com.nhn.android.chzzk');
             } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 isAppInstalled('chzzk://c68c3e1788d86ff11740edcd7040a8e8', 'https://apps.apple.com/kr/app/%EC%B9%98%EC%A7%80%EC%A7%81-chzzk/id1508716734');
                 window.addEventListener('pagehide', function() {
