@@ -82,11 +82,11 @@
         function redirectToThreads() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
             if (/android/i.test(userAgent)) {
-                window.location.href = 'intent://www.instagram.com/jisungeyo24/#Intent;package=com.instagram.android;scheme=https;end';
+                window.location.href = 'intent://www.threads.net/jisungeyo24/#Intent;package=com.instagram.android;scheme=https;end';
             } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 window.location.href = 'threads://user?username=jisungeyo24';
             } else {
-                window.location.href = 'https://www.threads.net/';
+                window.location.href = 'https://www.threads.net/jisungeyo24';
             }
         }
 
