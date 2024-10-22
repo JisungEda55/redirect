@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>네이버카페 바로가기</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/kJx4h0p/redirect.webp">
-        <style>
+    <style>
         @font-face {
             font-family: 'LINESeedKR-Bd';
             src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
@@ -67,22 +67,31 @@
             box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.5);
         }
     </style>
-<script>
-       function redirectToNaverCafe() {
+    <script>
+        function redirectToNaverCafe() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
             var appOpened = false;
-            if (/android/i.test(userAgent)) {
-                window.location.href = 'navercafe://cafe/azi025';
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.location.href = 'navercafe://cafe/azi025';
-                setTimeout(function () {
+            
+            // 앱이 설치되어 있는지 확인하는 함수 추가
+            function isAppInstalled(url, fallbackUrl) {
+                var iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = url;
+                document.body.appendChild(iframe);
+                setTimeout(function() {
+                    document.body.removeChild(iframe);
                     if (!appOpened) {
-                        window.location.href = 'https://m.cafe.naver.com/azi025';
+                        window.location.href = fallbackUrl;
                     }
-                }, 1000); // 앱 실행 실패 시 웹 URL로 리디렉션
+                }, 1500); // 1.5초 후 웹으로 리디렉션
+            }
 
+            if (/android/i.test(userAgent)) {
+                isAppInstalled('navercafe://cafe/azi025', 'https://m.cafe.naver.com/azi025');
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                isAppInstalled('navercafe://cafe/azi025', 'https://m.cafe.naver.com/azi025');
                 window.addEventListener('pagehide', function() {
-                    appOpened = true; // 앱이 열리면 타이머를 취소하도록 플래그 설정
+                    appOpened = true;
                 });
             } else {
                 window.location.href = 'https://cafe.naver.com/azi025';
