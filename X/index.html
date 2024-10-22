@@ -75,7 +75,14 @@
 <body>
     <div class="container">
         <h1>여기서 만나요!</h1>
-        <button class="button" onclick="redirectTo('https://x.com/')">
+        <button class="button" onclick="var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) {
+                window.location.href = 'intent://x.com/ShinJisungO5/#Intent;package=com.twitter.android;scheme=https;end';
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = 'twitter://user?screen_name=ShinJisungO5';
+            } else {
+                window.location.href = 'https://x.com/ShinJisungO5';
+            }">
             <img src="https://i.namu.wiki/i/_CKV1w4z7RM1KPhaiHXcrw48mMA0Rg0j0GI_le6_ztj7Wcj7xwMJN9dRsQ3VQKUEhxn2FffIu9QaeY9f6wxb6ukhlaIGAaQWCJ2ThMvIrOPGMBfQu4Z2TZ3D4T-GRs-DMrKt7CItoVbfNZqU4kqJwQ.svg" alt="X (Twitter)">
             X 바로가기
         </button>
