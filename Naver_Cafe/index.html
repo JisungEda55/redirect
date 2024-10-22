@@ -87,14 +87,14 @@
             }
 
             if (/android/i.test(userAgent)) {
-                isAppInstalled('navercafe://cafe/azi025', 'https://m.cafe.naver.com/azi025');
+                isAppInstalled('navercafe://cafe/azi025', 'https://m.cafe.naver.com/azi025.cafe?#');
             } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                isAppInstalled('navercafe://cafe/azi025', 'https://m.cafe.naver.com/azi025');
+                isAppInstalled('navercafe://cafe/azi025', 'https://m.cafe.naver.com/azi025.cafe?#');
                 window.addEventListener('pagehide', function() {
                     appOpened = true;
                 });
             } else {
-                window.location.href = 'https://cafe.naver.com/azi025';
+                window.location.href = 'https://m.cafe.naver.com/azi025.cafe?#';
             }
         }
     </script>
