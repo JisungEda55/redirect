@@ -67,16 +67,26 @@
             box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.5);
         }
     </style>
-    <script>
-        function redirectTo(url) {
-            window.location.href = url;
+<script>
+       function redirectToNaverCafe() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) {
+                window.location.href = 'navercafe://cafe/azi025';
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = 'navercafe://cafe/azi025';
+                setTimeout(function () {
+                    window.location.href = 'https://m.cafe.naver.com/azi025';
+                }, 1000); // 앱 실행 실패 시 웹 URL로 리디렉션
+            } else {
+                window.location.href = 'https://cafe.naver.com/azi025';
+            }
         }
     </script>
 </head>
 <body>
     <div class="container">
         <h1>여기서 만나요!</h1>
-        <button class="button" onclick="redirectTo('https://section.cafe.naver.com/ca-fe/home')">
+        <button class="button" onclick="redirectToNaverCafe()">
             <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/6d/51/77/6d51777e-1182-437b-d82f-c8fbe34ed869/AppIcon-0-0-1x_U007epad-0-0-sRGB-85-220.png/246x0w.webp" alt="네이버카페">
             네이버카페
         </button>
