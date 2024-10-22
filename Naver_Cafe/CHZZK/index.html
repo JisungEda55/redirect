@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>치지직 바로가기</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/kJx4h0p/redirect.webp">
+    <style>
+        @font-face {
+            font-family: 'LINESeedKR-Bd';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'LINESeedKR-Bd';
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f7;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #1d1d1f;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .button {
+            background-color: #1E201E;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'LINESeedKR-Bd';
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 10px;
+            width: 200px;
+            height: 60px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button img {
+            border-radius: 6px;
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .button:hover {
+            background-color: #fc3c1c;
+        }
+
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.5);
+        }
+    </style>
+    <script>
+        function redirectToChzzk() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var appOpened = false;
+            
+            function isAppInstalled(url, fallbackUrl) {
+                var iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = url;
+                document.body.appendChild(iframe);
+                setTimeout(function() {
+                    document.body.removeChild(iframe);
+                    if (!appOpened) {
+                        window.location.href = fallbackUrl;
+                    }
+                }, 1500);
+            }
+
+            if (/android/i.test(userAgent)) {
+                isAppInstalled('intent://c68c3e1788d86ff11740edcd7040a8e8#Intent;scheme=chzzk;package=com.nhn.android.chzzk;end', 'https://play.google.com/store/apps/details?id=com.nhn.android.chzzk');
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                isAppInstalled('chzzk://c68c3e1788d86ff11740edcd7040a8e8', 'https://apps.apple.com/kr/app/%EC%B9%98%EC%A7%80%EC%A7%81-chzzk/id1508716734');
+                window.addEventListener('pagehide', function() {
+                    appOpened = true;
+                });
+            } else {
+                window.location.href = 'https://chzzk.naver.com/c68c3e1788d86ff11740edcd7040a8e8';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>여기서 만나요!</h1>
+        <button class="button" onclick="redirectToChzzk()">
+            <img src="https://ssl.pstatic.net/static/nng/glive/resource/p/static/media/logo_light.530b4d8f04d5671f2465.gif" alt="치지직 로고">
+            치지직
+        </button>
+    </div>
+</body>
+</html>
