@@ -45,7 +45,38 @@
             width: 200px;
             height: 60px;
             transition: background-color 0.3s ease;
-            di기
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .button:hover {
+            background-color: #fc3c1c;
+        }
+
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.5);
+        }
+    </style>
+    <script>
+        function redirectTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>여기서 만나요!</h1>
+        <button class="button" onclick="redirectTo('https://x.com/')">
+            <img src="https://i.namu.wiki/i/_CKV1w4z7RM1KPhaiHXcrw48mMA0Rg0j0GI_le6_ztj7Wcj7xwMJN9dRsQ3VQKUEhxn2FffIu9QaeY9f6wxb6ukhlaIGAaQWCJ2ThMvIrOPGMBfQu4Z2TZ3D4T-GRs-DMrKt7CItoVbfNZqU4kqJwQ.svg" alt="X (Twitter)">
+            X 바로가기
         </button>
     </div>
 </body>
