@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>X 바로가기</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/kJx4h0p/redirect.webp">
-        <style>
+    <style>
         @font-face {
             font-family: 'LINESeedKR-Bd';
             src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
@@ -14,9 +14,10 @@
         }
 
         body {
-            font-family: 'LINESeedKR-Bd';
+            font-family: 'LINESeedKR-Bd', sans-serif;
             display: flex;
-            justify-content: center; flex-direction: column;
+            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
             margin: 0;
@@ -67,24 +68,39 @@
         }
     </style>
     <script>
-        function redirectTo(url) {
-            window.location.href = url;
+        function redirectToPlatform() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var appOpened = false;
+            try {
+                if (/android/i.test(userAgent)) {
+                    window.location.href = 'intent://x.com/ShinJisungO5/#Intent;package=com.twitter.android;scheme=https;end';
+                } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                    window.location.href = 'twitter://user?screen_name=ShinJisungO5';
+                    setTimeout(function() {
+                        if (!appOpened) {
+                            window.location.href = 'https://x.com/ShinJisungO5';
+                        }
+                    }, 1500); // 1.5초 후 웹으로 리다이렉트
+
+                    window.addEventListener('pagehide', function() {
+                        appOpened = true; // 앱이 열리면 타이머를 취소하도록 플래그 설정
+                    });
+                } else {
+                    window.location.href = 'https://x.com/ShinJisungO5';
+                }
+            } catch (error) {
+                // Intent 실패 시 웹 링크로 이동
+                window.location.href = 'https://x.com/ShinJisungO5';
+            }
         }
     </script>
 </head>
 <body>
     <div class="container">
         <h1>여기서 만나요!</h1>
-        <button class="button" onclick="var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            if (/android/i.test(userAgent)) {
-                window.location.href = 'intent://x.com/ShinJisungO5/#Intent;package=com.twitter.android;scheme=https;end';
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.location.href = 'twitter://user?screen_name=ShinJisungO5';
-            } else {
-                window.location.href = 'https://x.com/ShinJisungO5';
-            }">
-            <img src="https://i.namu.wiki/i/_CKV1w4z7RM1KPhaiHXcrw48mMA0Rg0j0GI_le6_ztj7Wcj7xwMJN9dRsQ3VQKUEhxn2FffIu9QaeY9f6wxb6ukhlaIGAaQWCJ2ThMvIrOPGMBfQu4Z2TZ3D4T-GRs-DMrKt7CItoVbfNZqU4kqJwQ.svg" alt="X (Twitter)">
-            X 바로가기
+        <button class="button" onclick="redirectToPlatform()">
+            <img src="https://i.namu.wiki/i/_CKV1w4z7RM1KPhaiHXcrw48mMA0Rg0j0GI_le6_ztj7Wcj7xwMJN9dRsQ3VQKUEhxn2FffIu9QaeY9f6wxb6ukhlaIGAaQWCJ2ThMvIrOPGMBfQu4Z2TZ3D4T-GRs-DMrKt7CItoVbfNZqU4kqJwQ.svg" alt="X로 바로 가기">
+             바로가기
         </button>
     </div>
 </body>
