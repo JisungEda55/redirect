@@ -87,9 +87,9 @@
             }
 
             if (/android/i.test(userAgent)) {
-                isAppInstalled('navercafe://cafe/azi025', 'https://m.cafe.naver.com/azi025.cafe?#');
+                isAppInstalled('navercafe://cafe?cafeUrl=azi025', 'https://m.cafe.naver.com/azi025.cafe?#');
             } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                isAppInstalled('navercafe://cafe/azi025', 'https://m.cafe.naver.com/azi025.cafe?#');
+                isAppInstalled('navercafe://cafe?cafeUrl=azi025', 'https://m.cafe.naver.com/azi025.cafe?#');
                 window.addEventListener('pagehide', function() {
                     appOpened = true;
                 });
