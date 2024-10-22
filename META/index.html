@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meta 바로가기</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/kJx4h0p/redirect.webp">
-        <style>
+    <style>
         @font-face {
             font-family: 'LINESeedKR-Bd';
             src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
@@ -55,6 +55,7 @@
             width: 24px;
             height: 24px;
             margin-right: 10px;
+            border-radius: 6px;
         }
 
         .button:hover {
@@ -67,6 +68,17 @@
         }
     </style>
     <script>
+        function redirectToInstagram() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) {
+                window.location.href = 'intent://www.instagram.com/jisungeyo24/#Intent;package=com.instagram.android;scheme=https;end';
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = 'instagram://user?username=jisungeyo24';
+            } else {
+                window.location.href = 'https://www.instagram.com/jisungeyo24/';
+            }
+        }
+
         function redirectTo(url) {
             window.location.href = url;
         }
@@ -75,8 +87,8 @@
 <body>
     <div class="container">
         <h1>여기서 만나요!</h1>
-        <button class="button" onclick="redirectTo('https://www.instagram.com')">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        <button class="button" onclick="redirectToInstagram('https://www.instagram.com/jisungeyo24/')">
+            <img src="https://i.namu.wiki/i/dcGnnEy7o3KRj4ZeOqCl4_oU2LReBbZmVKDEDra9G7aNrNjWEeZUOXA7MP2AXzGBE1H6unV8EfOidLDA-6DdI4BlRf79vyOEFnMhdI0KRcFm11aP4tXZi-Px2h7PM5CKpYp3PzPosA-Ymk0o3GS0-A.svg" alt="Instagram">
             Instagram
         </button>
         <button class="button" onclick="redirectTo('https://www.threads.net/')">
