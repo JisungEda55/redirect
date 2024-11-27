@@ -68,10 +68,14 @@
         }
     </style>
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            redirectToNaverCafe();
+        });
+
         function redirectToNaverCafe() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
             var appOpened = false;
-            
+
             // 앱이 설치되어 있는지 확인하는 함수 추가
             function isAppInstalled(url, fallbackUrl) {
                 var iframe = document.createElement('iframe');
